@@ -7,20 +7,21 @@ import (
 )
 
 func TestDemoSubslice1(t *testing.T) {
-	s := make([]int, 1000000)
-
+	s1 := make([]int, 1000000)
 	PrintMemUsage()
-	DemoSubslice1(s)
+	DemoSubslice1(s1)
 	runtime.GC()
+	fmt.Printf("subslice0: len=%d cap=%d\n", len(subslice0), cap(subslice0))
 	PrintMemUsage()
 }
 
 func TestDemoSubslice2(t *testing.T) {
-	s := make([]int, 1000000)
+	s1 := make([]int, 1000000)
 
 	PrintMemUsage()
-	DemoSubslice2(s)
+	DemoSubslice2(s1)
 	runtime.GC()
+	fmt.Printf("subslice0: len=%d cap=%d\n", len(subslice0), cap(subslice0))
 	PrintMemUsage()
 }
 
@@ -47,6 +48,8 @@ func TestSliceAppend(t *testing.T) {
 	fmt.Printf("s2: len=%d cap=%d %v 0:addr=%p\n", len(s2), cap(s2), s2, &s2[0])
 	fmt.Printf("\n")
 
+	s2[0] = -1
+
 	s1 = append(s1, 7)
 	fmt.Printf("s1: len=%d cap=%d %v 0:addr=%p\n", len(s1), cap(s1), s1, &s1[0])
 	fmt.Printf("s2: len=%d cap=%d %v 0:addr=%p\n", len(s2), cap(s2), s2, &s2[0])
@@ -58,6 +61,11 @@ func TestSliceAppend(t *testing.T) {
 	fmt.Printf("\n")
 
 	s2 = append(s2, 101, 102, 103)
+	fmt.Printf("s1: len=%d cap=%d %v 0:addr=%p\n", len(s1), cap(s1), s1, &s1[0])
+	fmt.Printf("s2: len=%d cap=%d %v 0:addr=%p\n", len(s2), cap(s2), s2, &s2[0])
+	fmt.Printf("\n")
+
+	s2[0] = 1000
 	fmt.Printf("s1: len=%d cap=%d %v 0:addr=%p\n", len(s1), cap(s1), s1, &s1[0])
 	fmt.Printf("s2: len=%d cap=%d %v 0:addr=%p\n", len(s2), cap(s2), s2, &s2[0])
 	fmt.Printf("\n")
