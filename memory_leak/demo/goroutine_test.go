@@ -13,10 +13,10 @@ func TestDemoGoroutineLeak1(t *testing.T) {
 	PrintMemUsage()
 }
 
-func TestDemoGoroutineLeak2(t *testing.T) {
+func TestDemoGoroutineNoLeak(t *testing.T) {
 
 	PrintMemUsage()
-	DemoGoroutineLeak2()
+	DemoGoroutineNoLeak()
 	runtime.GC()
 	PrintMemUsage()
 }

@@ -12,7 +12,7 @@ func DemoGoroutineLeak1() {
 	}
 }
 
-func DemoGoroutineLeak2() {
+func DemoGoroutineNoLeak() {
 
 	for i := 0; i < 10000; i++ {
 		ch := make(chan int)
